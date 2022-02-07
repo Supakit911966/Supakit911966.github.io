@@ -25,11 +25,45 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="ttps://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
     <script>
+        const liff_id = "1656870856-zapqq1Ma"
+        var profile = {};
+
+        liff.init({
+            liffId: liff_id
+        }).then(async () => {
+
+            if(liff.isInClinet()){
+
+                profile = await liff.getProfile();
+
+            }else{
+                alert("สวัสดี Line")
+            }
+
+        })
+
         $('#Big911966').on('submit', function(e){
             e.preventDefault()
-            let message = $(this).find('input[name=imag')[0].files[0]
+            let message = $(this).find('input[name=message').val()
+            let image = $(this).find('input[name=image')[0].files[0]
+
+            liff.sendMessages([
+                {
+                    type: 'text',
+                    text: message
+                },
+                {
+                    type: 'image',
+                    originalContentUrl: URL.createObjectURL(image),
+                    previewImageUrl:  URL.createObjectURL(image)
+                }
+                
+            ]).then(() => {
+                liff.closeWindow();
+            })
         })
     </script>
   </body>
