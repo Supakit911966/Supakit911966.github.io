@@ -30,23 +30,23 @@
     <script type="module">
 
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
-        import { getStorage, ref, uplodeBytes } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-storage.js";
-        
+        import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-storage.js";
+
         const firebaseConfig = {
-            apiKey: "AIzaSyD5xsvZeqmNb5mPQBU_M0Sr2R5SqceUWvI",
-            authDomain: "supakit911966.firebaseapp.com",
-            projectId: "supakit911966",
-            storageBucket: "supakit911966.appspot.com",
-            messagingSenderId: "417996705322",
-            appId: "1:417996705322:web:76d6cdcefd1198c4b0bd53",
-            measurementId: "G-YPT2MRS04R"
+            apiKey: "AIzaSyDuTUABGWT9yQCWua5A9LTDVe7DWlEVf-A",
+            authDomain: "therdpong1996-26165.firebaseapp.com",
+            projectId: "therdpong1996-26165",
+            storageBucket: "therdpong1996-26165.appspot.com",
+            messagingSenderId: "745930332667",
+            appId: "1:745930332667:web:ed30a598d42e1bbe6d535e",
+            measurementId: "G-5PPG1JG377"
         };
 
         // Initialize Firebase
         const firebaseApp = initializeApp(firebaseConfig);
         const storage = getStorage(firebaseApp);
 
-        const liff_id = "1656870852-kyrqq8vd"
+        const liff_id = "1656870856-zapqq1Ma"
         var profile = {};
 
         liff.init({
@@ -63,7 +63,7 @@
 
         })
 
-        $('#line-message').on('submit', function(e){
+        $('#Big911966').on('submit', function(e){
 
             e.preventDefault()
             let message = $(this).find('input[name=message]').val()
@@ -81,7 +81,7 @@
                 }
             }).then(snapshot => {
 
-                getDownloadURL(snapshot).then(url => {
+                getDownloadURL(imageRef).then(url => {
 
                     liff.sendMessages([{
                         type: 'text',
